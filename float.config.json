@@ -1,0 +1,13 @@
+{
+  "project": "digital-door-knockers",
+  "type": "political-infrastructure",
+  "framework": "conversation-as-infrastructure",
+  "methodology": "FLOAT-to-DNC-translation",
+  "deployment": "progressive-policy-accessibility",
+  "meta": {
+    "created": "2025-07-14",
+    "purpose": "Transform complex progressive policy into accessible voter interfaces",
+    "patterns": ["multi-lens-analysis", "persona-driven-messaging", "data-driven-storytelling"],
+    "validation": "Tim-Walz-free-school-lunch-70-percent-approval"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "free_school_meals": {
+    "metadata": {
+      "id": "free_school_meals",
+      "title": "Universal Free School Meals",
+      "status": "proven_success",
+      "validation": "tim_walz_minnesota_2023",
+      "approval_rating": 0.70,
+      "implementation_date": "2023-03-01",
+      "evidence_tier": 1
+    },
+    "core_facts": {
+      "daily_cost": "$2 per student",
+      "annual_family_savings": "$1000",
+      "meals_served_first_year": "150 million",
+      "lunch_participation_increase": "15%",
+      "breakfast_participation_increase": "40%",
+      "districts_participating": 328,
+      "students_affected": "all Minnesota K-12"
+    },
+    "economic_impact": {
+      "state_investment": "$400 million over 2 years",
+      "cost_per_coffee_comparison": "less than daily coffee",
+      "roi_multiplier": 1.84,
+      "administrative_savings": "elimination of means testing",
+      "economic_multiplier_effect": "families spend savings locally"
+    },
+    "lenses": {
+      "karen_fiscal_conservative": {
+        "frame": "smart_investment",
+        "key_message": "$2/day investment prevents bigger costs later",
+        "evidence_points": [
+          "70% Minnesota approval across party lines",
+          "Less than coffee cost per kid",
+          "Eliminates bureaucratic waste of means testing",
+          "Families save $1,000 annually for local spending"
+        ],
+        "counter_narrative": "This isn't government waste - it's efficient investment with proven returns",
+        "trust_builder": "Even fiscal conservatives support it because it works"
+      },
+      "qtb_storyteller": {
+        "frame": "human_dignity",
+        "key_message": "No kid goes hungry, no family chooses between groceries and school",
+        "evidence_points": [
+          "150 million meals = 150 million moments of care",
+          "No child feels ashamed getting lunch",
+          "Working families shouldn't face impossible choices",
+          "When everyone gets it, everyone benefits"
+        ],
+        "counter_narrative": "This is about basic human dignity and community care",
+        "trust_builder": "Real families sharing real impact stories"
+      },
+      "lf1m_truth_teller": {
+        "frame": "systemic_efficiency", 
+        "key_message": "Universal programs eliminate stigma and bureaucracy",
+        "evidence_points": [
+          "More efficient than complex means-testing systems",
+          "Removes administrative burden from schools",
+          "Eliminates lunch debt that hurt 6,800 students",
+          "Universal access prevents systemic exclusion"
+        ],
+        "counter_narrative": "Complex bureaucracy is the real waste - universal is simpler",
+        "trust_builder": "Data shows universal programs work better"
+      },
+      "evna_emotional_intelligence": {
+        "frame": "community_thriving",
+        "key_message": "When kids aren't hungry, they learn better and families thrive",
+        "evidence_points": [
+          "Dramatic improvements in classroom focus",
+          "Reduced stress on families managing meal logistics", 
+          "Community solidarity through shared benefit",
+          "Children's wellbeing drives educational success"
+        ],
+        "counter_narrative": "Investment in children's wellbeing strengthens entire communities",
+        "trust_builder": "Teachers and parents seeing real positive changes"
+      }
+    },
+    "counter_misinformation": {
+      "common_lies": [
+        {
+          "lie": "Government handouts create dependency",
+          "truth": "Universal programs reduce bureaucracy and stigma",
+          "evidence": "70% approval shows broad community support"
+        },
+        {
+          "lie": "Taxpayers can't afford it", 
+          "truth": "$2/day per student costs less than coffee",
+          "evidence": "Families save $1,000 annually for local spending"
+        },
+        {
+          "lie": "Only helps lazy parents",
+          "truth": "Helps all working families and improves education",
+          "evidence": "328 school districts and all income levels benefit"
+        }
+      ]
+    },
+    "conversation_scripts": {
+      "door_to_door": [
+        "Hi! I'm here to talk about how Minnesota proved that feeding kids saves families money",
+        "Did you know it costs just $2 per student per day - less than a cup of coffee?",
+        "But families save $1,000 every year, and 70% of people support it across party lines",
+        "When kids aren't hungry, they learn better, and the whole community benefits"
+      ],
+      "phone_bank": [
+        "Minnesota showed that smart investment in kids pays off for everyone",
+        "Universal free school meals cost $2/day but save families $1,000/year",
+        "Even fiscal conservatives support it because it eliminates bureaucratic waste",
+        "150 million meals served means 150 million moments of community care"
+      ],
+      "social_media": [
+        "$2/day investment → $1,000/year family savings. That's smart economics. #SmartInvestment",
+        "70% approval across ALL demographics in Minnesota. Progressive policy that actually works. #ProvenSuccess", 
+        "No kid goes hungry + No bureaucratic waste = Universal programs done right #UniversalCare",
+        "When we feed kids, families thrive and communities grow stronger #CommunityStrength"
+      ]
+    },
+    "visual_elements": {
+      "infographics": [
+        {
+          "type": "cost_comparison",
+          "data": {"daily_coffee": "$3-5", "student_meal": "$2", "family_savings": "$1000"}
+        },
+        {
+          "type": "approval_demographics", 
+          "data": {"rural": 0.68, "urban": 0.72, "suburban": 0.71, "cross_party": 0.70}
+        },
+        {
+          "type": "meals_impact",
+          "data": {"total_meals": "150M", "lunch_increase": "15%", "breakfast_increase": "40%"}
+        }
+      ],
+      "color_palette": {
+        "primary": "#0066cc",
+        "secondary": "#4da6ff", 
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "text": "#212529",
+        "background": "#fefefe"
+      }
+    }
+  }
+}

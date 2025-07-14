@@ -1,0 +1,91 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --prairie-50: #fefefe;
+  --prairie-100: #f8f9fa;
+  --prairie-200: #e9ecef;
+  --prairie-300: #dee2e6;
+  --prairie-400: #ced4da;
+  --prairie-500: #adb5bd;
+  --prairie-600: #6c757d;
+  --prairie-700: #495057;
+  --prairie-800: #343a40;
+  --prairie-900: #212529;
+  
+  --progressive-50: #e6f3ff;
+  --progressive-100: #b3d9ff;
+  --progressive-200: #80bfff;
+  --progressive-300: #4da6ff;
+  --progressive-400: #1a8cff;
+  --progressive-500: #0066cc;
+  --progressive-600: #0052a3;
+  --progressive-700: #003d7a;
+  --progressive-800: #002952;
+  --progressive-900: #001429;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--prairie-900);
+  background: var(--prairie-50);
+}
+
+.door-knocker-card {
+  @apply bg-white rounded-lg shadow-lg p-6 border border-prairie-200;
+  transition: all 0.3s ease;
+}
+
+.door-knocker-card:hover {
+  @apply shadow-xl;
+  transform: translateY(-2px);
+}
+
+.lens-button {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  border: 2px solid var(--progressive-300);
+}
+
+.lens-button.active {
+  @apply bg-progressive-500 text-white;
+  border-color: var(--progressive-500);
+}
+
+.lens-button:not(.active) {
+  @apply bg-white text-progressive-600 hover:bg-progressive-50;
+}
+
+.fact-badge {
+  @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
+  background: var(--progressive-100);
+  color: var(--progressive-800);
+}
+
+.counter-narrative {
+  @apply bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg;
+}
+
+.evidence-point {
+  @apply flex items-start space-x-3 p-3 bg-green-50 rounded-lg;
+}
+
+.misinformation-alert {
+  @apply bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg;
+}
+
+.conversation-script {
+  @apply bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400;
+}
+
+.data-visualization {
+  @apply bg-gradient-to-r from-progressive-50 to-progressive-100 p-6 rounded-lg;
+}
+
+.loading {
+  @apply flex justify-center items-center min-h-screen text-xl text-prairie-600;
+}
