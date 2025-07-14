@@ -7,10 +7,11 @@ import patternDefinitions from '../data/patternDefinitions.json'
 
 export class PolicyPatternEngine {
   constructor() {
+    // Store pattern definitions directly - they're static data
     this.patterns = patternDefinitions.patterns
-    this.negativePatterns = patternDefinitions.negative_patterns
+    this.negativePatterns = patternDefinitions.negative_patterns || {}
     this.categories = patternDefinitions.pattern_categories
-    this.scoring = patternDefinitions.scoring
+    this.scoring = patternDefinitions.scoring || {}
   }
 
   /**

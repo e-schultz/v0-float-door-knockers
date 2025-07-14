@@ -21,6 +21,7 @@
           <div 
             v-for="(policy, key) in policies" 
             :key="key"
+            v-memo="[selectedPolicy === key]"
             @click="selectedPolicy = key"
             class="policy-card cursor-pointer p-4 rounded-lg border-2 transition-all"
             :class="selectedPolicy === key ? 'border-progressive-500 bg-progressive-50' : 'border-prairie-300 hover:border-progressive-300'"
@@ -215,7 +216,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, shallowRef, markRaw } from 'vue'
 import PolicyXRayAnalyzer from './PolicyXRayAnalyzer.vue'
 import EffectivenessScorer from './EffectivenessScorer.vue'
 import { patternEngine } from '../lib/patternEngine.js'
@@ -227,12 +228,14 @@ export default {
     EffectivenessScorer
   },
   setup() {
-    const policies = ref({})
+    // Use shallowRef for large static data to avoid deep reactivity
+    const policies = shallowRef({})
     const selectedPolicy = ref('free_school_meals')
     const selectedLens = ref('karen_fiscal_conservative')
     const loading = ref(true)
-    const policyXRayAnalysis = ref(null)
-    const currentLensAnalysis = ref(null)
+    // Use shallowRef for analysis results to avoid deep reactive proxies
+    const policyXRayAnalysis = shallowRef(null)
+    const currentLensAnalysis = shallowRef(null)
     
     const currentPolicy = computed(() => {
       return policies.value[selectedPolicy.value]
@@ -303,7 +306,8 @@ export default {
         }
         const data = await response.json()
         console.log('Policies loaded:', Object.keys(data))
-        policies.value = data
+        // Mark the data as non-reactive since it's static
+        policies.value = markRaw(data)
         loading.value = false
       } catch (error) {
         console.error('Failed to load policies:', error)

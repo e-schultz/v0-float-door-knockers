@@ -172,7 +172,7 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, shallowRef } from 'vue'
 import { patternEngine } from '../lib/patternEngine.js'
 import patternDefinitions from '../data/patternDefinitions.json'
 
@@ -197,8 +197,9 @@ export default {
     const showInlineHighlights = ref(false)
     const filterLevel = ref('all')
     const selectedPattern = ref(null)
-    const currentAnalysis = ref(null)
-    const policyAnalysis = ref(null)
+    // Use shallowRef for analysis results to avoid deep reactive proxies
+    const currentAnalysis = shallowRef(null)
+    const policyAnalysis = shallowRef(null)
 
     // Watch content changes but only analyze if X-Ray is open
     watch(() => props.content, (newContent) => {
