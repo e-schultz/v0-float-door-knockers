@@ -138,5 +138,287 @@
         "background": "#fefefe"
       }
     }
+  },
+  "medicare_expansion": {
+    "metadata": {
+      "id": "medicare_expansion",
+      "title": "Medicare for All Expansion",
+      "status": "proven_framework",
+      "validation": "medicare_existing_success_85_percent_satisfaction",
+      "approval_rating": 0.63,
+      "implementation_date": "proposed",
+      "evidence_tier": 2
+    },
+    "core_facts": {
+      "current_medicare_satisfaction": "85% beneficiary satisfaction",
+      "administrative_costs": "Medicare 2% vs Private 8% overhead",
+      "coverage_gap": "28 million Americans uninsured",
+      "bankruptcy_medical": "66% medical debt related",
+      "employer_savings": "$12,000 per employee annually",
+      "family_premium_savings": "$5,000+ annually",
+      "prescription_negotiation": "Medicare can negotiate drug prices"
+    },
+    "economic_impact": {
+      "total_savings": "$500 billion annually",
+      "administrative_efficiency": "6% overhead reduction",
+      "employer_relief": "$12,000 per employee saved",
+      "family_savings": "$5,000+ annual premium elimination",
+      "economic_multiplier": "Healthcare spending redirected to economy",
+      "small_business_boost": "Competition freed from healthcare burden"
+    },
+    "lenses": {
+      "karen_fiscal_conservative": {
+        "frame": "market_efficiency",
+        "key_message": "Medicare already works - 85% satisfaction with 2% overhead vs 8% private",
+        "evidence_points": [
+          "Medicare runs more efficiently than private insurance",
+          "Eliminates $500 billion in administrative waste annually",
+          "Small businesses freed from healthcare burden to compete",
+          "Employers save $12,000 per employee annually"
+        ],
+        "counter_narrative": "This isn't expanding government - it's expanding what already works efficiently",
+        "trust_builder": "Medicare beneficiaries consistently rate it higher than private insurance"
+      },
+      "qtb_storyteller": {
+        "frame": "family_security",
+        "key_message": "Healthcare should heal, not bankrupt families",
+        "evidence_points": [
+          "66% of bankruptcies involve medical debt",
+          "28 million Americans live without coverage",
+          "Families skip medicine to pay rent",
+          "Small business owners choose between employees and healthcare"
+        ],
+        "counter_narrative": "Every family deserves the security of knowing healthcare won't destroy them financially",
+        "trust_builder": "Real stories from families freed from medical debt fear"
+      },
+      "lf1m_truth_teller": {
+        "frame": "systemic_waste_elimination",
+        "key_message": "Private insurance is the bureaucracy - Medicare eliminates it",
+        "evidence_points": [
+          "Insurance companies spend more on administration than Medicare",
+          "Prior authorization delays life-saving treatment",
+          "Network restrictions limit doctor choice",
+          "Medicare already negotiates better drug prices"
+        ],
+        "counter_narrative": "The real bureaucracy is insurance companies between you and your doctor",
+        "trust_builder": "Medicare recipients have more doctor choice than private insurance"
+      },
+      "evna_emotional_intelligence": {
+        "frame": "community_health",
+        "key_message": "Healthy communities thrive together - illness affects everyone",
+        "evidence_points": [
+          "Uninsured emergency room visits cost everyone",
+          "Sick workers spread illness and reduce productivity",
+          "Healthy families contribute more to communities",
+          "Preventive care saves lives and money"
+        ],
+        "counter_narrative": "Community health is shared prosperity - we all benefit when everyone can access care",
+        "trust_builder": "Healthcare workers supporting Medicare expansion speak from experience"
+      }
+    },
+    "counter_misinformation": {
+      "common_lies": [
+        {
+          "lie": "Government takeover of healthcare",
+          "truth": "Medicare expands existing program that works efficiently",
+          "evidence": "85% Medicare satisfaction vs lower private insurance ratings"
+        },
+        {
+          "lie": "Too expensive for taxpayers",
+          "truth": "Saves $500 billion annually through administrative efficiency",
+          "evidence": "Medicare 2% overhead vs private insurance 8% overhead"
+        },
+        {
+          "lie": "You'll lose your doctor",
+          "truth": "Medicare gives more doctor choice than private networks",
+          "evidence": "Medicare accepted by more providers than most private plans"
+        }
+      ]
+    },
+    "conversation_scripts": {
+      "door_to_door": [
+        "Medicare already works great - 85% satisfaction with seniors who have it",
+        "It runs more efficiently than private insurance - 2% overhead vs 8%",
+        "Your employer could save $12,000 per employee and you'd save on premiums",
+        "Medicare gives you more doctor choice than private insurance networks"
+      ],
+      "phone_bank": [
+        "Medicare expansion builds on what already works efficiently",
+        "85% satisfaction rate shows Medicare delivers better than private insurance",
+        "Saves families $5,000+ annually while eliminating medical bankruptcy fear",
+        "Small businesses freed from healthcare burden can compete and grow"
+      ],
+      "social_media": [
+        "Medicare: 85% satisfaction, 2% overhead. Private insurance: Lower satisfaction, 8% overhead. Expand what works. #MedicareWorks",
+        "$500 billion in administrative waste eliminated. That's real fiscal responsibility. #HealthcareEfficiency",
+        "Medical bankruptcy affects 66% of families. Medicare expansion means healthcare heals, not destroys. #HealthcareSecurity",
+        "More doctor choice + lower costs + proven efficiency = Medicare expansion makes sense #MedicareForAll"
+      ]
+    },
+    "visual_elements": {
+      "infographics": [
+        {
+          "type": "efficiency_comparison",
+          "data": {"medicare_overhead": "2%", "private_overhead": "8%", "satisfaction": "85%"}
+        },
+        {
+          "type": "family_savings",
+          "data": {"premium_savings": "$5000+", "employer_savings": "$12000", "total_savings": "$500B"}
+        },
+        {
+          "type": "coverage_impact",
+          "data": {"uninsured": "28M", "medical_bankruptcy": "66%", "satisfaction": "85%"}
+        }
+      ],
+      "color_palette": {
+        "primary": "#0066cc",
+        "secondary": "#4da6ff",
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "text": "#212529",
+        "background": "#fefefe"
+      }
+    }
+  },
+  "climate_green_jobs": {
+    "metadata": {
+      "id": "climate_green_jobs",
+      "title": "Climate Action & Green Jobs Program",
+      "status": "proven_precedent",
+      "validation": "new_deal_ccc_historical_success_plus_ira_results",
+      "approval_rating": 0.68,
+      "implementation_date": "proposed",
+      "evidence_tier": 2
+    },
+    "core_facts": {
+      "jobs_created": "3+ million green jobs potential",
+      "historical_precedent": "CCC employed 3M during Great Depression",
+      "current_ira_success": "$100B+ clean energy investment since 2022",
+      "manufacturing_boom": "Solar/wind manufacturing reshoring",
+      "infrastructure_need": "$2.6 trillion infrastructure gap",
+      "energy_independence": "Reduce fossil fuel imports $100B annually",
+      "public_health_savings": "$600B annually from pollution reduction"
+    },
+    "economic_impact": {
+      "job_multiplier": "3 jobs created per direct green job",
+      "wage_premium": "Green jobs pay 15% above median",
+      "export_potential": "$2.5 trillion global clean energy market",
+      "energy_cost_reduction": "Renewable energy now cheapest source",
+      "infrastructure_modernization": "Smart grid, efficient buildings, clean transport",
+      "rural_economic_revival": "Wind/solar farms revitalize rural communities"
+    },
+    "lenses": {
+      "karen_fiscal_conservative": {
+        "frame": "economic_opportunity",
+        "key_message": "Climate action = economic leadership in fastest-growing global industry",
+        "evidence_points": [
+          "$2.5 trillion global clean energy market we can lead",
+          "Green jobs pay 15% above median with growth potential", 
+          "Energy independence saves $100B annually on imports",
+          "Historical precedent: CCC created 3M jobs during Depression"
+        ],
+        "counter_narrative": "This isn't environmental regulation - it's economic opportunity and energy security",
+        "trust_builder": "Business leaders investing billions in clean energy see the profit potential"
+      },
+      "qtb_storyteller": {
+        "frame": "community_renewal",
+        "key_message": "Green jobs bring prosperity back to working communities",
+        "evidence_points": [
+          "Manufacturing jobs returning to America through clean energy",
+          "Rural communities revitalized by wind and solar farms",
+          "Young people can build careers without leaving hometowns",
+          "Clean air means healthier children and lower medical bills"
+        ],
+        "counter_narrative": "Climate action rebuilds the American dream in communities left behind",
+        "trust_builder": "Workers in clean energy plants sharing success stories"
+      },
+      "lf1m_truth_teller": {
+        "frame": "systemic_transformation",
+        "key_message": "Fossil fuel dependence is the real job killer - clean energy creates sustainable work",
+        "evidence_points": [
+          "Renewable energy now cheapest - market forces driving change",
+          "Fossil fuel volatility destroys economic planning",
+          "Clean energy jobs can't be outsourced or automated easily",
+          "Every $1 in green investment creates 3 additional jobs"
+        ],
+        "counter_narrative": "Clinging to fossil fuels is economic suicide - clean energy is inevitable",
+        "trust_builder": "Economic data shows clean energy sector outpacing fossil fuels in job creation"
+      },
+      "evna_emotional_intelligence": {
+        "frame": "generational_responsibility",
+        "key_message": "Building a world our children can thrive in while creating good jobs today",
+        "evidence_points": [
+          "Climate action creates immediate employment opportunities",
+          "Clean air and water improve community health and wellbeing",
+          "Young workers excited about careers with environmental purpose",
+          "Communities working together on climate resilience build social bonds"
+        ],
+        "counter_narrative": "We can create prosperity while protecting the planet our children inherit",
+        "trust_builder": "Parents and workers seeing how green jobs provide both purpose and paychecks"
+      }
+    },
+    "counter_misinformation": {
+      "common_lies": [
+        {
+          "lie": "Climate action kills jobs",
+          "truth": "Climate action creates 3 million+ well-paying jobs",
+          "evidence": "Clean energy sector fastest-growing employer in America"
+        },
+        {
+          "lie": "Green energy is too expensive",
+          "truth": "Renewable energy now cheapest source, saves consumers money",
+          "evidence": "Solar and wind costs dropped 70%+ in past decade"
+        },
+        {
+          "lie": "Climate policy hurts the economy",
+          "truth": "Climate inaction costs $600B annually in health impacts alone",
+          "evidence": "Extreme weather events cost billions in infrastructure damage"
+        }
+      ]
+    },
+    "conversation_scripts": {
+      "door_to_door": [
+        "Climate action means good jobs - 3 million green jobs paying 15% above median",
+        "We have historical proof: CCC created 3 million jobs during the Great Depression",
+        "Clean energy is now cheapest - we can lead the $2.5 trillion global market",
+        "Every community benefits: manufacturing jobs, rural wind farms, clean air for kids"
+      ],
+      "phone_bank": [
+        "Green jobs can't be outsourced and pay above median wages",
+        "Energy independence saves $100 billion annually on fossil fuel imports", 
+        "Climate action builds on American innovation - we invented solar panels",
+        "Rural communities revitalized by wind and solar development"
+      ],
+      "social_media": [
+        "3 million green jobs + 15% wage premium + energy independence = Climate action is economic action #GreenJobs",
+        "Historical proof: CCC created 3M jobs during Depression. Climate action can do it again. #NewDeal2024",
+        "Clean energy is now cheapest energy. Leading the $2.5T global market = American jobs. #ClimateLeadership",
+        "Rural wind farms + manufacturing jobs + clean air = Climate action rebuilds communities #ClimateJobs"
+      ]
+    },
+    "visual_elements": {
+      "infographics": [
+        {
+          "type": "job_creation",
+          "data": {"green_jobs": "3M+", "wage_premium": "15%", "job_multiplier": "3x"}
+        },
+        {
+          "type": "economic_opportunity", 
+          "data": {"global_market": "$2.5T", "energy_savings": "$100B", "health_savings": "$600B"}
+        },
+        {
+          "type": "historical_success",
+          "data": {"ccc_jobs": "3M", "ira_investment": "$100B+", "clean_energy_growth": "70%"}
+        }
+      ],
+      "color_palette": {
+        "primary": "#0066cc",
+        "secondary": "#4da6ff",
+        "success": "#28a745",
+        "warning": "#ffc107", 
+        "text": "#212529",
+        "background": "#fefefe"
+      }
+    }
   }
 }

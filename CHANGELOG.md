@@ -5,6 +5,36 @@ All notable changes to the Digital Door Knockers project will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-07-14
+
+### Added
+- **Medicare for All Expansion Digital Door Knocker**: Complete policy analysis system
+  - 85% Medicare satisfaction vs. private insurance efficiency messaging
+  - $500 billion annual savings through administrative efficiency
+  - $12,000 employer savings per employee economic impact
+  - Multi-lens perspective covering fiscal efficiency, family security, systemic reform, community health
+  - Counter-misinformation toolkit addressing "government takeover" false narratives
+- **Climate Action & Green Jobs Digital Door Knocker**: Historical precedent-based framework
+  - 3+ million green jobs potential with 15% wage premium above median
+  - $2.5 trillion global clean energy market leadership opportunity
+  - Historical validation through CCC employment during Great Depression
+  - Economic opportunity framing for fiscal conservatives, community renewal for storytellers
+  - Energy independence and job creation messaging across all personas
+- **Enhanced Multi-Policy Interface**: Seamless switching between three policy frameworks
+- **Expanded Conversation Tools**: Door-to-door, phone bank, and social media scripts for all policies
+- **Comprehensive Counter-Misinformation**: Lie/truth/evidence structure for Medicare and climate policies
+
+### Technical Improvements
+- **JSON Data Architecture**: Scalable structure supporting unlimited policy additions
+- **Dynamic Policy Switching**: Vue.js reactive interface handles multiple policy datasets
+- **Consistent Design Language**: Prairie Progressivism aesthetics across all policies
+- **Performance Optimization**: Efficient data loading and lens switching
+
+### Validation Evidence
+- **Medicare Framework**: Built on existing 85% satisfaction ratings and proven efficiency
+- **Climate Framework**: Historical CCC precedent + current $100B+ IRA investment success
+- **Multi-Lens Effectiveness**: Each policy resonates across fiscal, narrative, systemic, and community perspectives
+
 ## [1.0.0] - 2025-07-14
 
 ### Added

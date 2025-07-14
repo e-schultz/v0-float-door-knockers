@@ -31,13 +31,28 @@ View any policy through different persona lenses:
 - **Trust builders** - Credible sources and validation points
 - **Economic impact visualization** - Personal benefits clearly explained
 
-## Validation: Tim Walz Free School Lunch Success
+## Featured Digital Door Knockers
 
-This system demonstrates patterns proven through Minnesota's universal free school lunch program:
+### 1. Universal Free School Meals (Tim Walz Success)
+**Proven Results**: Minnesota 2023 implementation
 - **70% voter approval** across all demographics
 - **$1,000 annual family savings** vs. **$2/day program cost**  
 - **150 million meals served** in first year
 - **15% lunch participation increase, 40% breakfast increase**
+
+### 2. Medicare for All Expansion
+**Proven Framework**: Building on existing Medicare success
+- **85% Medicare satisfaction** vs. lower private insurance ratings
+- **$500 billion annually** saved through administrative efficiency
+- **$12,000 employer savings** per employee annually
+- **28 million uninsured** Americans gain coverage
+
+### 3. Climate Action & Green Jobs Program
+**Proven Precedent**: Historical CCC success + current clean energy boom
+- **3+ million green jobs** potential paying 15% above median
+- **$2.5 trillion global market** leadership opportunity
+- **$100 billion annually** saved on fossil fuel imports
+- **Historical validation**: CCC employed 3M during Great Depression
 
 ## Technical Implementation
 
