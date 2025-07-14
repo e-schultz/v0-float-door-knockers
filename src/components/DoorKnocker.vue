@@ -35,12 +35,12 @@
       </div>
     </div>
 
-    <!-- Effectiveness Scorer -->
-    <EffectivenessScorer 
-      v-if="currentPolicy && policyXRayAnalysis"
+    <!-- Effectiveness Scorer - Hidden until X-Ray is used -->
+    <!-- <EffectivenessScorer 
+      v-if="currentPolicy && (policyXRayAnalysis || currentLensAnalysis)"
       :analysis="currentLensAnalysis"
       :policyAnalysis="policyXRayAnalysis"
-    />
+    /> -->
 
     <!-- Lens Selector -->
     <div v-if="currentPolicy" class="lens-selector mb-8">
@@ -277,26 +277,20 @@ export default {
       }
     })
     
-    // Analyze current policy when it changes
+    // Analyze current policy when it changes - but only if X-Ray is open
     watch(currentPolicy, (newPolicy) => {
-      if (newPolicy) {
-        console.log('Analyzing policy:', selectedPolicy.value)
-        // Defer heavy analysis to avoid blocking
-        setTimeout(() => {
-          policyXRayAnalysis.value = patternEngine.analyzePolicy(newPolicy)
-        }, 100)
-      }
+      // Don't analyze unless user actually needs it
+      console.log('Policy changed to:', selectedPolicy.value)
+      // Clear previous analysis
+      policyXRayAnalysis.value = null
+      currentLensAnalysis.value = null
     })
     
-    // Analyze current lens content when it changes
+    // Don't analyze lens content automatically - wait for X-Ray to open
     watch([currentLens, currentXRayContent], ([newLens, newContent]) => {
-      if (newLens && newContent) {
-        console.log('Analyzing lens:', selectedLens.value)
-        // Defer analysis to avoid blocking
-        setTimeout(() => {
-          currentLensAnalysis.value = patternEngine.analyzeText(newContent, currentXRayContext.value)
-        }, 50)
-      }
+      // Just log the change, don't analyze
+      console.log('Lens changed to:', selectedLens.value)
+      currentLensAnalysis.value = null
     })
     
     // Load policies data

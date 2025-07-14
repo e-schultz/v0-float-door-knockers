@@ -200,19 +200,25 @@ export default {
     const currentAnalysis = ref(null)
     const policyAnalysis = ref(null)
 
-    // Analyze content when it changes
+    // Watch content changes but only analyze if X-Ray is open
     watch(() => props.content, (newContent) => {
-      if (newContent) {
-        currentAnalysis.value = patternEngine.analyzeText(newContent, props.context)
+      if (newContent && showXRay.value) {
+        console.log('X-Ray: Content changed while open, analyzing...')
+        setTimeout(() => {
+          currentAnalysis.value = patternEngine.analyzeText(newContent, props.context)
+        }, 50)
       }
-    }, { immediate: true })
+    })
 
-    // Analyze full policy if provided
+    // Watch policy changes but only analyze if X-Ray is open
     watch(() => props.policy, (newPolicy) => {
-      if (newPolicy) {
-        policyAnalysis.value = patternEngine.analyzePolicy(newPolicy)
+      if (newPolicy && showXRay.value) {
+        console.log('X-Ray: Policy changed while open, analyzing...')
+        setTimeout(() => {
+          policyAnalysis.value = patternEngine.analyzePolicy(newPolicy)
+        }, 150)
       }
-    }, { immediate: true })
+    })
 
     const filteredPatterns = computed(() => {
       if (!currentAnalysis.value) return []
