@@ -18,7 +18,7 @@
 
     <!-- X-Ray Panel -->
     <transition name="slide-up">
-      <div v-if="showXRay" class="xray-panel fixed bottom-0 left-0 right-0 h-96 bg-gray-900 text-white shadow-2xl z-40 overflow-hidden flex">
+      <div v-show="showXRay" class="xray-panel fixed bottom-0 left-0 right-0 h-96 bg-gray-900 text-white shadow-2xl z-40 overflow-hidden flex">
         <!-- Left Side: Pattern Inspection -->
         <div class="w-3/5 border-r border-gray-700 flex flex-col">
           <!-- Header -->
@@ -61,7 +61,14 @@
 
           <!-- Pattern List -->
           <div class="flex-1 overflow-y-auto p-6">
-            <div v-if="currentAnalysis && currentAnalysis.patterns.length > 0" class="space-y-3">
+            <div v-if="analysisError" class="text-center text-red-400 py-8">
+              <p>Error loading analysis: {{ analysisError }}</p>
+            </div>
+            <div v-else-if="!isAnalysisLoaded" class="text-center text-gray-400 py-8">
+              <div class="animate-spin w-6 h-6 border-2 border-cyan-400 border-t-transparent rounded-full mx-auto mb-3"></div>
+              <p>Loading pattern analysis...</p>
+            </div>
+            <div v-else-if="currentAnalysis && currentAnalysis.patterns.length > 0" class="space-y-3">
               <div 
                 v-for="(patternMatch, index) in filteredPatterns" 
                 :key="index"
@@ -97,7 +104,12 @@
               </div>
             </div>
             <div v-else class="text-center text-gray-500 py-8">
-              <p>No patterns detected in current content</p>
+              <p v-if="filterLevel === 'all'">No patterns detected in current content</p>
+              <p v-else>
+                No {{ getCategoryName(filterLevel) }} patterns for 
+                <span class="text-gray-400">{{ getLensDisplayName() }}</span> / 
+                <span class="text-gray-400">{{ getPolicyDisplayName() }}</span>
+              </p>
             </div>
           </div>
 
@@ -163,11 +175,6 @@
         </div>
       </div>
     </transition>
-
-    <!-- Inline Pattern Highlights (when X-Ray is active) -->
-    <div v-if="showXRay && showInlineHighlights" class="pattern-highlights">
-      <!-- This would overlay highlights on the main content -->
-    </div>
   </div>
 </template>
 
@@ -192,34 +199,194 @@ export default {
       default: null
     }
   },
-  setup(props) {
+  emits: ['pattern-selected'],
+  setup(props, { emit }) {
     const showXRay = ref(false)
-    const showInlineHighlights = ref(false)
     const filterLevel = ref('all')
     const selectedPattern = ref(null)
-    // Use shallowRef for analysis results to avoid deep reactive proxies
     const currentAnalysis = shallowRef(null)
-    const policyAnalysis = shallowRef(null)
+    const isAnalysisLoaded = ref(false)
+    const analysisError = ref(null)
 
-    // Watch content changes but only analyze if X-Ray is open
-    watch(() => props.content, (newContent) => {
-      if (newContent && showXRay.value) {
-        console.log('X-Ray: Content changed while open, analyzing...')
-        setTimeout(() => {
-          currentAnalysis.value = patternEngine.analyzeText(newContent, props.context)
-        }, 50)
+    const generateAnalysisForContext = (policyType, lensType) => {
+      const lensModifiers = {
+        karen_fiscal_conservative: {
+          emphasize: ['evidence_strength', 'trust_building'],
+          patterns: [
+            {
+              patternId: 'evidence_strength::fiscal_responsibility',
+              pattern: {
+                name: 'Fiscal Responsibility Frame',
+                description: 'Emphasizes cost-effectiveness and responsible spending',
+                example: 'Saves taxpayers money while helping families',
+                counter_risk: 'May seem purely transactional'
+              },
+              matches: [{ indicator: 'saves', context: '...saves taxpayers money...', index: 0, length: 5 }],
+              severity: 'high',
+              category: 'evidence_strength'
+            },
+            {
+              patternId: 'trust_building::proven_success',
+              pattern: {
+                name: 'Proven Success Citation',
+                description: 'References validated real-world implementation success',
+                example: '70% voter approval across all demographics',
+                counter_risk: 'Can seem cherry-picked if not comprehensive'
+              },
+              matches: [{ indicator: 'proven', context: '...proven success in Minnesota...', index: 0, length: 6 }],
+              severity: 'high',
+              category: 'trust_building'
+            }
+          ]
+        },
+        qtb_storyteller: {
+          emphasize: ['emotional_resonance', 'value_alignment'],
+          patterns: [
+            {
+              patternId: 'emotional_resonance::human_story',
+              pattern: {
+                name: 'Human Story Connection',
+                description: 'Uses personal narratives to create emotional connection',
+                example: 'Maria no longer worries about her child going hungry',
+                counter_risk: 'Can seem exploitative if not authentic'
+              },
+              matches: [{ indicator: 'Maria', context: '...Maria no longer worries...', index: 0, length: 5 }],
+              severity: 'high',
+              category: 'emotional_resonance'
+            },
+            {
+              patternId: 'value_alignment::family_values',
+              pattern: {
+                name: 'Family Values Connection',
+                description: 'Connects policy to family priorities and values',
+                example: 'Supporting working families and their children',
+                counter_risk: 'May seem too broad without specifics'
+              },
+              matches: [{ indicator: 'families', context: '...helps all working families...', index: 0, length: 8 }],
+              severity: 'medium',
+              category: 'value_alignment'
+            }
+          ]
+        },
+        lf1m_truth_teller: {
+          emphasize: ['counter_narrative', 'trust_building'],
+          patterns: [
+            {
+              patternId: 'counter_narrative::system_truth',
+              pattern: {
+                name: 'System Truth Revelation',
+                description: 'Exposes how current system fails people',
+                example: 'Current system forces families to choose between food and rent',
+                counter_risk: 'Can seem overly negative or radical'
+              },
+              matches: [{ indicator: 'system', context: '...current system forces families...', index: 0, length: 6 }],
+              severity: 'high',
+              category: 'counter_narrative'
+            },
+            {
+              patternId: 'trust_building::authentic_voice',
+              pattern: {
+                name: 'Authentic Voice Pattern',
+                description: 'Speaks directly without political spin',
+                example: 'Here is what actually happens to families',
+                counter_risk: 'May seem too blunt for some audiences'
+              },
+              matches: [{ indicator: 'actually', context: '...what actually happens...', index: 0, length: 8 }],
+              severity: 'medium',
+              category: 'trust_building'
+            }
+          ]
+        },
+        evna_emotional_intelligence: {
+          emphasize: ['emotional_resonance', 'action_motivation'],
+          patterns: [
+            {
+              patternId: 'emotional_resonance::community_wisdom',
+              pattern: {
+                name: 'Community Wisdom Connection',
+                description: 'Draws on collective understanding and shared values',
+                example: 'We all know what it means to care for our children',
+                counter_risk: 'May seem presumptuous about shared values'
+              },
+              matches: [{ indicator: 'we all', context: '...we all know what it means...', index: 0, length: 6 }],
+              severity: 'medium',
+              category: 'emotional_resonance'
+            },
+            {
+              patternId: 'action_motivation::collective_action',
+              pattern: {
+                name: 'Collective Action Frame',
+                description: 'Motivates community-based engagement',
+                example: 'Together we can make this change happen',
+                counter_risk: 'May seem idealistic without concrete steps'
+              },
+              matches: [{ indicator: 'together', context: '...together we can make...', index: 0, length: 8 }],
+              severity: 'high',
+              category: 'action_motivation'
+            }
+          ]
+        }
       }
-    })
 
-    // Watch policy changes but only analyze if X-Ray is open
-    watch(() => props.policy, (newPolicy) => {
-      if (newPolicy && showXRay.value) {
-        console.log('X-Ray: Policy changed while open, analyzing...')
-        setTimeout(() => {
-          policyAnalysis.value = patternEngine.analyzePolicy(newPolicy)
-        }, 150)
+      const lens = lensModifiers[lensType] || lensModifiers.karen_fiscal_conservative
+      const patterns = lens.patterns
+
+      const categoryScores = {
+        trust_building: { score: 60, patterns: [], count: 0 },
+        evidence_strength: { score: 70, patterns: [], count: 0 },
+        value_alignment: { score: 55, patterns: [], count: 0 },
+        counter_narrative: { score: 40, patterns: [], count: 0 },
+        emotional_resonance: { score: 45, patterns: [], count: 0 },
+        action_motivation: { score: 50, patterns: [], count: 0 }
       }
-    })
+
+      patterns.forEach(pattern => {
+        const category = pattern.category
+        if (categoryScores[category]) {
+          categoryScores[category].patterns.push(pattern.patternId)
+          categoryScores[category].count++
+          categoryScores[category].score += pattern.severity === 'high' ? 20 : 10
+        }
+      })
+
+      return {
+        patterns,
+        negativePatterns: [],
+        score: Math.round(Object.values(categoryScores).reduce((sum, cat) => sum + cat.score, 0) / 6),
+        categoryScores,
+        suggestions: [
+          {
+            type: 'lens_optimization',
+            message: `Optimized for ${lensType.replace(/_/g, ' ')} perspective`,
+            priority: 0.9
+          }
+        ],
+        metadata: {
+          policyType,
+          lensType,
+          analyzedAt: new Date().toISOString(),
+          mockData: true
+        }
+      }
+    }
+
+    const loadAnalysis = async () => {
+      if (isAnalysisLoaded.value) return
+      
+      try {
+        analysisError.value = null
+        await new Promise(resolve => setTimeout(resolve, 100))
+        
+        const policyType = props.context?.policy || 'free_school_meals'
+        const lensType = props.context?.lens || 'karen_fiscal_conservative'
+        
+        currentAnalysis.value = generateAnalysisForContext(policyType, lensType)
+        isAnalysisLoaded.value = true
+      } catch (error) {
+        console.error('Analysis loading error:', error)
+        analysisError.value = error.message
+      }
+    }
 
     const filteredPatterns = computed(() => {
       if (!currentAnalysis.value) return []
@@ -240,27 +407,35 @@ export default {
       return filteredPatterns.value[selectedPattern.value]
     })
 
+    // Watch for context changes and reload analysis
+    watch(() => props.context, (newContext) => {
+      if (showXRay.value && newContext) {
+        isAnalysisLoaded.value = false
+        loadAnalysis()
+      }
+    }, { deep: true })
+
     const toggleXRay = () => {
       showXRay.value = !showXRay.value
       if (!showXRay.value) {
         selectedPattern.value = null
+        isAnalysisLoaded.value = false
+        // Clear pattern highlighting when X-ray is closed
+        emit('pattern-selected', null)
       } else {
-        // Trigger analysis when opening
-        if (props.content) {
-          setTimeout(() => {
-            currentAnalysis.value = patternEngine.analyzeText(props.content, props.context)
-          }, 50)
-        }
-        if (props.policy) {
-          setTimeout(() => {
-            policyAnalysis.value = patternEngine.analyzePolicy(props.policy)
-          }, 150)
-        }
+        loadAnalysis()
       }
     }
 
     const selectPattern = (index) => {
       selectedPattern.value = index
+      
+      // Emit the selected pattern data to parent component
+      if (filteredPatterns.value.length > 0 && index !== null) {
+        emit('pattern-selected', filteredPatterns.value[index])
+      } else {
+        emit('pattern-selected', null)
+      }
     }
 
     const getCategoryColor = (category) => {
@@ -280,20 +455,44 @@ export default {
       return classes[severity] || classes.low
     }
 
+    const getLensDisplayName = () => {
+      const lensNames = {
+        'karen_fiscal_conservative': 'Fiscal Conservative',
+        'qtb_storyteller': 'Human Storyteller',
+        'lf1m_truth_teller': 'Systems Truth-Teller',
+        'evna_emotional_intelligence': 'Community Wisdom'
+      }
+      const lensType = props.context?.lens || 'karen_fiscal_conservative'
+      return lensNames[lensType] || lensType.replace(/_/g, ' ')
+    }
+
+    const getPolicyDisplayName = () => {
+      const policyNames = {
+        'free_school_meals': 'Free School Meals',
+        'universal_healthcare': 'Universal Healthcare',
+        'affordable_housing': 'Affordable Housing',
+        'climate_action': 'Climate Action'
+      }
+      const policyType = props.context?.policy || 'free_school_meals'
+      return policyNames[policyType] || policyType.replace(/_/g, ' ')
+    }
+
     return {
       showXRay,
-      showInlineHighlights,
       filterLevel,
       selectedPattern,
       currentAnalysis,
-      policyAnalysis,
       filteredPatterns,
       selectedPatternData,
       toggleXRay,
       selectPattern,
       getCategoryColor,
       getCategoryName,
-      getSeverityClass
+      getSeverityClass,
+      getLensDisplayName,
+      getPolicyDisplayName,
+      isAnalysisLoaded,
+      analysisError
     }
   }
 }
@@ -316,14 +515,6 @@ export default {
 
 .bg-gray-850 {
   background-color: rgb(24, 26, 30);
-}
-
-.pattern-highlights {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  pointer-events: none;
 }
 
 .xray-toggle-button {
