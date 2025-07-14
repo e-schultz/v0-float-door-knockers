@@ -20,6 +20,22 @@ export class PolicyPatternEngine {
    * @returns {Object} Analysis results with patterns found
    */
   analyzeText(text, context = {}) {
+    // Early exit for empty or very short text
+    if (!text || text.length < 10) {
+      return {
+        patterns: [],
+        negativePatterns: [],
+        score: 0,
+        categoryScores: {},
+        suggestions: [],
+        metadata: { textLength: 0, wordCount: 0, analyzedAt: new Date().toISOString(), context }
+      }
+    }
+
+    // Limit text length to prevent performance issues
+    const maxTextLength = 5000
+    const analyzedText = text.length > maxTextLength ? text.substring(0, maxTextLength) : text
+    
     const results = {
       patterns: [],
       negativePatterns: [],
@@ -27,16 +43,17 @@ export class PolicyPatternEngine {
       categoryScores: {},
       suggestions: [],
       metadata: {
-        textLength: text.length,
-        wordCount: text.split(/\s+/).length,
+        textLength: analyzedText.length,
+        wordCount: analyzedText.split(/\s+/).length,
         analyzedAt: new Date().toISOString(),
-        context
+        context,
+        truncated: text.length > maxTextLength
       }
     }
 
     // Analyze positive patterns
     for (const [patternId, pattern] of Object.entries(this.patterns)) {
-      const matches = this.detectPattern(text, pattern)
+      const matches = this.detectPattern(analyzedText, pattern)
       if (matches.length > 0) {
         results.patterns.push({
           patternId,
