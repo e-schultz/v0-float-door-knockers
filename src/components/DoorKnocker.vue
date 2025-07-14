@@ -294,7 +294,7 @@ export default {
     // Load policies data
     onMounted(async () => {
       try {
-        const response = await fetch('/policies.json')
+        const response = await fetch('./policies.json')
         const data = await response.json()
         policies.value = data
         loading.value = false
