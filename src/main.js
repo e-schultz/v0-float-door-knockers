@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 // import DoorKnocker from './components/DoorKnocker.vue'
-import MinimalDoorKnocker from './components/MinimalDoorKnocker.vue'
+// import MinimalDoorKnocker from './components/MinimalDoorKnocker.vue'
+import SimpleDoorKnocker from './components/SimpleDoorKnocker.vue'
 import './style.css'
 
-createApp(MinimalDoorKnocker).mount('#app')
+createApp(SimpleDoorKnocker).mount('#app')
