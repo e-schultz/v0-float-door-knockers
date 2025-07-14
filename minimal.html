@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Test</title>
+</head>
+<body>
+    <h1>Minimal Digital Door Knockers Test</h1>
+    <div id="app">
+        <p>Status: <span id="status">Not started</span></p>
+        <button onclick="testFetch()">Test Fetch</button>
+        <pre id="output"></pre>
+    </div>
+    
+    <script>
+        async function testFetch() {
+            const status = document.getElementById('status');
+            const output = document.getElementById('output');
+            
+            status.textContent = 'Fetching...';
+            
+            try {
+                // Test 1: Can we fetch the file?
+                const response = await fetch('./policies.json');
+                status.textContent = `Fetch status: ${response.status}`;
+                
+                // Test 2: Can we parse it?
+                const data = await response.json();
+                
+                // Test 3: What's in it?
+                output.textContent = `
+Keys: ${Object.keys(data).join(', ')}
+First policy structure: ${JSON.stringify(Object.keys(data[Object.keys(data)[0]]), null, 2)}
+                `;
+                
+                status.textContent = 'Success!';
+                
+            } catch (error) {
+                status.textContent = 'Error!';
+                output.textContent = error.toString();
+            }
+        }
+    </script>
+</body>
+</html>
