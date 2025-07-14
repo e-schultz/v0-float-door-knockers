@@ -280,22 +280,35 @@ export default {
     // Analyze current policy when it changes
     watch(currentPolicy, (newPolicy) => {
       if (newPolicy) {
-        policyXRayAnalysis.value = patternEngine.analyzePolicy(newPolicy)
+        console.log('Analyzing policy:', selectedPolicy.value)
+        // Defer heavy analysis to avoid blocking
+        setTimeout(() => {
+          policyXRayAnalysis.value = patternEngine.analyzePolicy(newPolicy)
+        }, 100)
       }
     })
     
     // Analyze current lens content when it changes
     watch([currentLens, currentXRayContent], ([newLens, newContent]) => {
       if (newLens && newContent) {
-        currentLensAnalysis.value = patternEngine.analyzeText(newContent, currentXRayContext.value)
+        console.log('Analyzing lens:', selectedLens.value)
+        // Defer analysis to avoid blocking
+        setTimeout(() => {
+          currentLensAnalysis.value = patternEngine.analyzeText(newContent, currentXRayContext.value)
+        }, 50)
       }
     })
     
     // Load policies data
     onMounted(async () => {
       try {
+        console.log('Loading policies.json...')
         const response = await fetch('./policies.json')
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
         const data = await response.json()
+        console.log('Policies loaded:', Object.keys(data))
         policies.value = data
         loading.value = false
       } catch (error) {

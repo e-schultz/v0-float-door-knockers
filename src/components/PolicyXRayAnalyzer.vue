@@ -237,6 +237,18 @@ export default {
       showXRay.value = !showXRay.value
       if (!showXRay.value) {
         selectedPattern.value = null
+      } else {
+        // Trigger analysis when opening
+        if (props.content) {
+          setTimeout(() => {
+            currentAnalysis.value = patternEngine.analyzeText(props.content, props.context)
+          }, 50)
+        }
+        if (props.policy) {
+          setTimeout(() => {
+            policyAnalysis.value = patternEngine.analyzePolicy(props.policy)
+          }, 150)
+        }
       }
     }
 

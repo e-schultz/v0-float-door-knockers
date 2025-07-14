@@ -50,7 +50,7 @@ export class PolicyPatternEngine {
 
     // Analyze negative patterns
     for (const [patternId, pattern] of Object.entries(this.negativePatterns)) {
-      const matches = this.detectPattern(text, pattern)
+      const matches = this.detectPattern(analyzedText, pattern)
       if (matches.length > 0) {
         results.negativePatterns.push({
           patternId,

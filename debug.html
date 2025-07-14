@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Policy Loading</title>
+</head>
+<body>
+    <h1>Debug Policy Loading</h1>
+    <div id="status">Loading...</div>
+    <pre id="output"></pre>
+    
+    <script>
+        async function testPoliciesLoading() {
+            const status = document.getElementById('status');
+            const output = document.getElementById('output');
+            
+            try {
+                console.log('Fetching policies.json...');
+                status.textContent = 'Fetching policies.json...';
+                
+                const response = await fetch('./policies.json');
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Data loaded:', data);
+                
+                status.textContent = 'Success! Loaded policies:';
+                output.textContent = JSON.stringify(Object.keys(data), null, 2);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                status.textContent = 'Error: ' + error.message;
+                output.textContent = error.stack;
+            }
+        }
+        
+        testPoliciesLoading();
+    </script>
+</body>
+</html>
