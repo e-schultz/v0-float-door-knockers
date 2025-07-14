@@ -5,6 +5,47 @@ All notable changes to the Digital Door Knockers project will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-07-14
+
+### Added - X-Ray Policy Analysis Integration
+- **Policy X-Ray Analyzer**: Complete rhetorical pattern analysis system
+  - Real-time pattern detection with 18+ positive patterns across 6 categories
+  - Trust building, value alignment, evidence strength, counter-narrative, emotional resonance, action motivation
+  - Interactive inspection panel with severity scoring (high/medium/low)
+  - Pattern occurrence highlighting and context extraction
+  - Adapted from authoritarian rhetoric detection to progressive policy optimization
+- **Pattern Detection Engine**: Sophisticated analysis system
+  - Policy-specific pattern definitions with indicators and examples
+  - Negative pattern detection with improvement suggestions
+  - Multi-lens effectiveness scoring
+  - Context-aware suggestions based on persona targeting
+- **Effectiveness Scoring Dashboard**: Visual policy messaging metrics
+  - Overall effectiveness score (0-100%) with circular progress visualization
+  - Category breakdown showing pattern distribution
+  - Top messaging strengths identification
+  - Prioritized improvement suggestions
+  - Detailed pattern distribution analysis
+- **Interactive X-Ray DevTools**: Bottom panel inspection interface
+  - Click-to-inspect any policy content
+  - Filter patterns by category
+  - Real-time pattern analysis as users browse
+  - Pattern type badges with contextual coloring
+  - Floating X-Ray toggle button with score preview
+
+### Technical Features
+- **Vue.js Integration**: Seamless component integration with existing interface
+- **Pattern Engine Library**: Modular pattern detection system in `lib/patternEngine.js`
+- **JSON Pattern Definitions**: Extensible pattern database in `data/patternDefinitions.json`
+- **Real-time Analysis**: Dynamic pattern detection as content changes
+- **Performance Optimized**: Efficient pattern matching with caching
+
+### Analysis Capabilities
+- **Pattern Categories**: 6 main categories with weighted scoring
+- **Severity Levels**: High/Medium/Low impact classification
+- **Lens Optimization**: Persona-specific messaging recommendations
+- **Policy Comparison**: Cross-policy pattern analysis
+- **Negative Pattern Detection**: Identifies messaging weaknesses
+
 ## [1.1.0] - 2025-07-14
 
 ### Added

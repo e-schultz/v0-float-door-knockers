@@ -35,6 +35,13 @@
       </div>
     </div>
 
+    <!-- Effectiveness Scorer -->
+    <EffectivenessScorer 
+      v-if="currentPolicy && policyXRayAnalysis"
+      :analysis="currentLensAnalysis"
+      :policyAnalysis="policyXRayAnalysis"
+    />
+
     <!-- Lens Selector -->
     <div v-if="currentPolicy" class="lens-selector mb-8">
       <div class="bg-white rounded-lg p-6 shadow-lg">
@@ -197,19 +204,35 @@
         </div>
       </div>
     </div>
+    
+    <!-- X-Ray Analyzer Integration -->
+    <PolicyXRayAnalyzer 
+      :content="currentXRayContent"
+      :context="currentXRayContext"
+      :policy="currentPolicy"
+    />
   </div>
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
+import PolicyXRayAnalyzer from './PolicyXRayAnalyzer.vue'
+import EffectivenessScorer from './EffectivenessScorer.vue'
+import { patternEngine } from '../lib/patternEngine.js'
 
 export default {
   name: 'DoorKnocker',
+  components: {
+    PolicyXRayAnalyzer,
+    EffectivenessScorer
+  },
   setup() {
     const policies = ref({})
     const selectedPolicy = ref('free_school_meals')
     const selectedLens = ref('karen_fiscal_conservative')
     const loading = ref(true)
+    const policyXRayAnalysis = ref(null)
+    const currentLensAnalysis = ref(null)
     
     const currentPolicy = computed(() => {
       return policies.value[selectedPolicy.value]
@@ -229,6 +252,44 @@ export default {
       }
       return names[lensKey] || lensKey
     }
+    
+    // X-Ray content for analysis
+    const currentXRayContent = computed(() => {
+      if (!currentLens.value) return ''
+      
+      // Combine all lens content for analysis
+      const content = [
+        currentLens.value.key_message,
+        ...currentLens.value.evidence_points,
+        currentLens.value.counter_narrative,
+        currentLens.value.trust_builder
+      ].join(' ')
+      
+      return content
+    })
+    
+    const currentXRayContext = computed(() => {
+      return {
+        policy: selectedPolicy.value,
+        lens: selectedLens.value,
+        policyTitle: currentPolicy.value?.metadata?.title || '',
+        lensName: getLensName(selectedLens.value)
+      }
+    })
+    
+    // Analyze current policy when it changes
+    watch(currentPolicy, (newPolicy) => {
+      if (newPolicy) {
+        policyXRayAnalysis.value = patternEngine.analyzePolicy(newPolicy)
+      }
+    })
+    
+    // Analyze current lens content when it changes
+    watch([currentLens, currentXRayContent], ([newLens, newContent]) => {
+      if (newLens && newContent) {
+        currentLensAnalysis.value = patternEngine.analyzeText(newContent, currentXRayContext.value)
+      }
+    })
     
     // Load policies data
     onMounted(async () => {
@@ -250,7 +311,11 @@ export default {
       currentPolicy,
       currentLens,
       getLensName,
-      loading
+      loading,
+      currentXRayContent,
+      currentXRayContext,
+      policyXRayAnalysis,
+      currentLensAnalysis
     }
   }
 }

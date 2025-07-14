@@ -12,6 +12,15 @@ Traditional door knocking builds trust through one-on-one conversations. **Digit
 
 ## Features
 
+### 🔍 NEW: X-Ray Policy Analysis System
+**Revolutionary rhetorical pattern analysis** adapted from authoritarian rhetoric detection
+- **Real-time Pattern Detection**: 18+ positive patterns across 6 effectiveness categories
+- **Interactive DevTools Panel**: Click any policy text to inspect rhetorical patterns
+- **Effectiveness Scoring**: 0-100% score with visual dashboard and improvement suggestions
+- **Pattern Categories**: Trust building, value alignment, evidence strength, counter-narratives, emotional resonance, action motivation
+- **Lens Optimization**: Persona-specific messaging recommendations
+- **Negative Pattern Detection**: Identifies and suggests fixes for weak messaging
+
 ### Multi-Lens Analysis System
 View any policy through different persona lenses:
 - **Fiscal Conservative (Karen)**: Smart investment framing with ROI focus

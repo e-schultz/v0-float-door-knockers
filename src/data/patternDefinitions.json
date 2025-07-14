@@ -1,0 +1,275 @@
+{
+  "pattern_categories": {
+    "trust_building": {
+      "name": "Trust Building Patterns",
+      "description": "Patterns that establish credibility and voter confidence",
+      "color": "#28a745",
+      "icon": "shield-check"
+    },
+    "value_alignment": {
+      "name": "Value Alignment Patterns", 
+      "description": "Connects policy to voter values and priorities",
+      "color": "#0066cc",
+      "icon": "heart"
+    },
+    "evidence_strength": {
+      "name": "Evidence Strength Patterns",
+      "description": "Data and proof point effectiveness",
+      "color": "#6c757d",
+      "icon": "chart-bar"
+    },
+    "counter_narrative": {
+      "name": "Counter-Narrative Patterns",
+      "description": "Addresses opposition messaging effectively",
+      "color": "#dc3545",
+      "icon": "shield-alt"
+    },
+    "emotional_resonance": {
+      "name": "Emotional Resonance Patterns",
+      "description": "Human connection and storytelling",
+      "color": "#fd7e14",
+      "icon": "users"
+    },
+    "action_motivation": {
+      "name": "Action Motivation Patterns",
+      "description": "Drives voter engagement and action",
+      "color": "#6f42c1",
+      "icon": "bullhorn"
+    }
+  },
+  "patterns": {
+    "trust_building::01_proven_success": {
+      "category": "trust_building",
+      "name": "Proven Success Citation",
+      "description": "References validated real-world implementation success",
+      "indicators": ["proven", "success", "implemented", "% approval", "satisfaction"],
+      "severity": "high",
+      "positive": true,
+      "example": "70% voter approval across all demographics in Minnesota",
+      "counter_risk": "Can seem cherry-picked if not comprehensive"
+    },
+    "trust_building::02_bipartisan_appeal": {
+      "category": "trust_building",
+      "name": "Cross-Party Support",
+      "description": "Demonstrates broad political appeal beyond party lines",
+      "indicators": ["across party lines", "bipartisan", "conservatives support", "broad support"],
+      "severity": "high",
+      "positive": true,
+      "example": "Even fiscal conservatives support it because it works",
+      "counter_risk": "May dilute progressive identity if overused"
+    },
+    "trust_building::03_expert_validation": {
+      "category": "trust_building",
+      "name": "Expert Endorsement",
+      "description": "Cites credible experts or institutions supporting the policy",
+      "indicators": ["experts agree", "studies show", "research proves", "analysis demonstrates"],
+      "severity": "medium",
+      "positive": true,
+      "example": "CBO Analysis shows $500B in savings",
+      "counter_risk": "Can seem elitist if not balanced with real stories"
+    },
+    "value_alignment::01_family_savings": {
+      "category": "value_alignment",
+      "name": "Family Economic Benefit",
+      "description": "Directly connects to family financial wellbeing",
+      "indicators": ["family savings", "$ annually", "save money", "economic relief"],
+      "severity": "high",
+      "positive": true,
+      "example": "Families save $1,000 annually for local spending",
+      "counter_risk": "Must be believable and specific"
+    },
+    "value_alignment::02_community_care": {
+      "category": "value_alignment",
+      "name": "Community Solidarity",
+      "description": "Appeals to shared community values and mutual support",
+      "indicators": ["community", "together", "everyone benefits", "shared prosperity"],
+      "severity": "medium",
+      "positive": true,
+      "example": "When everyone gets it, everyone benefits",
+      "counter_risk": "Can trigger individualist resistance"
+    },
+    "value_alignment::03_generational_responsibility": {
+      "category": "value_alignment", 
+      "name": "Future Generation Appeal",
+      "description": "Connects policy to children and future prosperity",
+      "indicators": ["our children", "future generations", "kids", "tomorrow"],
+      "severity": "medium",
+      "positive": true,
+      "example": "Building a world our children can thrive in",
+      "counter_risk": "Can seem abstract without concrete benefits"
+    },
+    "evidence_strength::01_hard_numbers": {
+      "category": "evidence_strength",
+      "name": "Concrete Statistics",
+      "description": "Uses specific, verifiable numerical evidence",
+      "indicators": ["million", "billion", "%", "per", "$"],
+      "severity": "high",
+      "positive": true,
+      "example": "150 million meals served in first year",
+      "counter_risk": "Numbers must be accurate and verifiable"
+    },
+    "evidence_strength::02_comparison_framing": {
+      "category": "evidence_strength",
+      "name": "Relatable Comparison",
+      "description": "Compares costs/benefits to everyday items",
+      "indicators": ["less than coffee", "costs less than", "compared to", "versus"],
+      "severity": "medium",
+      "positive": true,
+      "example": "$2/day per student costs less than coffee",
+      "counter_risk": "Comparison must resonate with audience"
+    },
+    "evidence_strength::03_historical_precedent": {
+      "category": "evidence_strength",
+      "name": "Historical Success",
+      "description": "Cites historical examples of similar success",
+      "indicators": ["historical", "precedent", "proven", "New Deal", "past success"],
+      "severity": "medium",
+      "positive": true,
+      "example": "CCC created 3M jobs during Great Depression",
+      "counter_risk": "Historical context must be relevant"
+    },
+    "counter_narrative::01_myth_busting": {
+      "category": "counter_narrative",
+      "name": "Direct Myth Correction",
+      "description": "Directly addresses and corrects false narratives",
+      "indicators": ["actually", "truth is", "contrary to", "not true that"],
+      "severity": "high",
+      "positive": true,
+      "example": "Contrary to myths, Medicare runs more efficiently",
+      "counter_risk": "Can amplify the myth if not careful"
+    },
+    "counter_narrative::02_reframe_waste": {
+      "category": "counter_narrative",
+      "name": "Efficiency Reframing",
+      "description": "Reframes 'government waste' as private inefficiency",
+      "indicators": ["real waste", "bureaucracy", "efficient", "overhead"],
+      "severity": "high",
+      "positive": true,
+      "example": "Complex bureaucracy is the real waste - universal is simpler",
+      "counter_risk": "Must provide concrete efficiency examples"
+    },
+    "counter_narrative::03_flip_narrative": {
+      "category": "counter_narrative",
+      "name": "Narrative Reversal",
+      "description": "Flips opposition talking points back on them",
+      "indicators": ["actually helps", "real threat", "truth is opposite", "flip side"],
+      "severity": "medium",
+      "positive": true,
+      "example": "Private insurance is the real government bureaucracy",
+      "counter_risk": "Can seem too clever if overused"
+    },
+    "emotional_resonance::01_personal_story": {
+      "category": "emotional_resonance",
+      "name": "Human Impact Story",
+      "description": "Centers real human experiences and impacts",
+      "indicators": ["families", "children", "workers", "real people", "stories"],
+      "severity": "high",
+      "positive": true,
+      "example": "No child feels ashamed getting lunch",
+      "counter_risk": "Stories must feel authentic not manipulative"
+    },
+    "emotional_resonance::02_dignity_framing": {
+      "category": "emotional_resonance",
+      "name": "Human Dignity Appeal",
+      "description": "Frames policy as preserving human dignity",
+      "indicators": ["dignity", "deserve", "basic human", "no one should"],
+      "severity": "medium",
+      "positive": true,
+      "example": "Every family deserves healthcare security",
+      "counter_risk": "Can trigger 'entitlement' counter-narratives"
+    },
+    "emotional_resonance::03_hope_possibility": {
+      "category": "emotional_resonance",
+      "name": "Aspirational Vision",
+      "description": "Paints hopeful picture of what's possible",
+      "indicators": ["can build", "imagine", "possible", "thrive", "prosper"],
+      "severity": "medium",
+      "positive": true,
+      "example": "Communities working together build prosperity",
+      "counter_risk": "Must balance hope with concrete steps"
+    },
+    "action_motivation::01_urgency_creation": {
+      "category": "action_motivation",
+      "name": "Urgency Without Panic",
+      "description": "Creates sense of urgency without fear-mongering",
+      "indicators": ["now", "today", "can't wait", "time to act", "moment"],
+      "severity": "medium",
+      "positive": true,
+      "example": "The time has come to fix our healthcare system",
+      "counter_risk": "Avoid crisis rhetoric that paralyzes"
+    },
+    "action_motivation::02_empowerment": {
+      "category": "action_motivation",
+      "name": "Voter Empowerment",
+      "description": "Makes voters feel their action matters",
+      "indicators": ["your vote", "together we", "you can help", "make difference"],
+      "severity": "high",
+      "positive": true,
+      "example": "Your vote can bring these savings to families",
+      "counter_risk": "Must provide clear action steps"
+    },
+    "action_motivation::03_clear_choice": {
+      "category": "action_motivation",
+      "name": "Binary Choice Clarity",
+      "description": "Presents clear choice between two futures",
+      "indicators": ["choose between", "either...or", "clear choice", "two paths"],
+      "severity": "medium",
+      "positive": true,
+      "example": "We can choose investment or continued struggle",
+      "counter_risk": "Avoid false dichotomies"
+    }
+  },
+  "negative_patterns": {
+    "weakness::01_vague_promises": {
+      "category": "weakness",
+      "name": "Vague Promise",
+      "description": "Makes promises without specific mechanisms",
+      "indicators": ["somehow", "eventually", "hopefully", "maybe"],
+      "severity": "high",
+      "positive": false,
+      "example": "This will somehow make things better",
+      "improvement": "Add specific implementation details"
+    },
+    "weakness::02_jargon_overload": {
+      "category": "weakness",
+      "name": "Policy Jargon",
+      "description": "Uses insider language that alienates voters",
+      "indicators": ["implementation", "stakeholders", "framework", "paradigm"],
+      "severity": "medium",
+      "positive": false,
+      "example": "Stakeholder engagement framework implementation",
+      "improvement": "Translate to plain language"
+    },
+    "weakness::03_defensive_posture": {
+      "category": "weakness",
+      "name": "Defensive Framing",
+      "description": "Starts from defensive position against attacks",
+      "indicators": ["not true that", "despite claims", "defending against", "actually not"],
+      "severity": "medium",
+      "positive": false,
+      "example": "Despite what critics say, this isn't socialism",
+      "improvement": "Lead with positive vision"
+    }
+  },
+  "scoring": {
+    "pattern_weights": {
+      "trust_building": 0.25,
+      "value_alignment": 0.20,
+      "evidence_strength": 0.20,
+      "counter_narrative": 0.15,
+      "emotional_resonance": 0.15,
+      "action_motivation": 0.05
+    },
+    "severity_multipliers": {
+      "high": 1.0,
+      "medium": 0.6,
+      "low": 0.3
+    },
+    "effectiveness_thresholds": {
+      "excellent": 80,
+      "good": 60,
+      "fair": 40,
+      "poor": 20
+    }
+  }
+}
